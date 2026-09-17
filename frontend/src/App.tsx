@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import './App.css';
 
-const API_BASE = 'http://localhost:4000/api';
+const API_BASE = 'https://multiplier-production.up.railway.app/api';
 const SYMBOLS = ['AAPLx', 'TSLAx', 'SPYx', 'NVDAx', 'QQQx'];
 
 const REAL_HISTORY = [
