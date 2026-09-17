@@ -68,7 +68,7 @@ export function getLatestSnapshot(symbol: string, network: string): MultiplierSn
     ORDER BY fetched_at DESC
     LIMIT 1
   `);
-  return stmt.get(symbol, network) as MultiplierSnapshot | undefined;
+  return stmt.get(symbol, network) as unknown as MultiplierSnapshot | undefined;
 }
 
 export function insertEvent(event: CorporateEvent) {
@@ -85,10 +85,10 @@ export function insertEvent(event: CorporateEvent) {
 
 export function getEventsForSymbol(symbol: string): CorporateEvent[] {
   const stmt = db.prepare(`SELECT * FROM corporate_events WHERE symbol = ? ORDER BY detected_at DESC`);
-  return stmt.all(symbol) as CorporateEvent[];
+   return stmt.all(symbol) as unknown as CorporateEvent[];
 }
 
 export function getAllEvents(): CorporateEvent[] {
   const stmt = db.prepare(`SELECT * FROM corporate_events ORDER BY detected_at DESC LIMIT 100`);
-  return stmt.all() as CorporateEvent[];
+  return stmt.all() as unknown as CorporateEvent[];
 }
